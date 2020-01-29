@@ -5,7 +5,7 @@ import _ from 'underscore'
 import React from 'react'
 import Link from '../components/link'
 import moment from 'moment'
-import * as comp from '../components'
+import comp from '../components'
 
 export default
 @d.connect(props => ({

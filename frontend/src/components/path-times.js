@@ -11,5 +11,5 @@ class PathTimes extends React.Component {
   }
 }
 
-PathHandler.propTypes = {
+PathTimes.propTypes = {
 }
