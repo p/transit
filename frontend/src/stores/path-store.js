@@ -22,5 +22,5 @@ function receive_stations(state, payload) {
 
 function receive_station_realtime(state, { station_slug, payload }) {
   t.PathApiRealtimeResponse(payload)
-  return u.merge(state, u.make_hash(station_slug, payload))
+  return u.merge_subkey(state, 'trains',u.make_hash(station_slug, payload))
 }

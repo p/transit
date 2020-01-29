@@ -8,14 +8,17 @@ import moment from 'moment'
 import comp from '../components'
 
 export default
-@d.connect(props => ({}))
+@d.connect(props => ({
+  stations: [['path','stations'],u.unim],
+  trains: [['path','trains'],u.unim],
+  }))
 class PathHandler extends React.Component {
   render() {
-    if (!this.props.path_times) {
+    if (!this.props.stations) {
       return <div>Loading...</div>
     }
 
-    return <comp.PathTimes path_times={this.props.path_times} />
+    return <comp.PathTimes     />
   }
 
   componentDidMount() {

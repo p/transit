@@ -64,6 +64,21 @@ export function merge(one, two) {
   return Object.assign({}, one, two)
 }
 
+export function merge_subkey(left, subkey, right){
+  if(!_.isArray(subkey)){
+    subkey=[subkey]
+  }
+  let last=subkey.pop()
+  let new_left=merge(left)
+  let a_left=new_left,a_right=right
+  _.each(subkey,item=>{
+    a_left=Object.assign({},a_left,make_hash(item, a_left[item]||{}))
+    a_left=a_left[item]
+  })
+  a_left[last]=right
+  return new_left
+}
+
 export function make_hash() {
   let i = 0
   let out = {}
