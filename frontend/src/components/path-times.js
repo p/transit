@@ -1,3 +1,4 @@
+import * as f from '../format'
 import * as t from '../types'
 import _ from 'underscore'
 import * as d from '../deps'
@@ -15,13 +16,6 @@ let hm_formatter = d.DateTimeFormatter.ofPattern('H:mm').withLocale(
 )
 //let m_formatter = d.DateTimeFormatter.ofPattern('m').withLocale(d.JodaLocale.US)
 
-function format_train_status(status){
-  let bits = status.split('_')
-  bits=_.map(bits,bit=>
-    bit[0]+bit.slice(1).toLowerCase())
-  return bits.join(' ')
-}
-
 function Train(props) {
   let delta = d.Duration.between(d.LocalDateTime.now(), props.train.arrival)
 
@@ -30,7 +24,7 @@ function Train(props) {
       {props.train.lineName}
       {': '}
       {props.train.arrival.format(hm_formatter)} {delta.toMinutes()} min{' '}
-      {format_train_status(props.train.status)}
+      {f.format_train_status(props.train.status)}
     </p>
   )
 }
