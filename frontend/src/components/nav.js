@@ -7,7 +7,9 @@ export default function Nav() {
   return (
     <nav>
       <ul>
-        <li></li>
+        <li>
+          <Link to="Path">PATH</Link>
+  </li>
       </ul>
     </nav>
   )
