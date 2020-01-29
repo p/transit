@@ -1,0 +1,8 @@
+source 'https://rubygems.org'
+
+gem 'sinatra'
+gem 'byebug'
+gem 'shotgun'
+gem 'geocoder'
+gem 'puma'
+gem 'daybreak'

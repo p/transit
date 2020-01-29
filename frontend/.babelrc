@@ -1,0 +1,12 @@
+{
+  "presets": [
+  // https://babeljs.io/docs/en/babel-preset-env
+  ["@babel/preset-env",{
+  targets:{node:true,
+  // pale moon 28 uses firefox 52 engine
+  browsers:'firefox 52'},
+  }], "@babel/preset-react"],
+  "plugins": ["react-hot-loader/babel",
+  "@babel/plugin-proposal-export-default-from",
+  ["@babel/plugin-proposal-decorators",{legacy:true}]]
+}

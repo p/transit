@@ -1,0 +1,46 @@
+#!/bin/sh
+
+set -e
+
+base=`dirname $0`/..
+cd $base/frontend
+
+cd src/actions
+
+list=
+echo "// generated file - do not edit" >index.js
+echo >>index.js
+for f in *.js; do
+  if echo "$f" |grep -q index.js; then
+    continue
+  fi
+  file=`echo "$f" |sed -e 's/.js$//'`
+  identifier=`echo "$file" |sed -e s/-actions// |tr - _`
+  echo "import * as $identifier from './$file'" >>index.js
+  list="$list, $identifier"
+done
+echo >>index.js
+echo "export default Object.assign({}$list)" >>index.js
+
+cd ../stores
+
+list=
+echo "// generated file - do not edit" >index.js
+echo >>index.js
+echo "import reactor from '../reactor'" >>index.js
+for f in *.js; do
+  if echo "$f" |grep -q index.js; then
+    continue
+  fi
+  file=`echo "$f" |sed -e 's/.js$//'`
+  identifier=`echo "$file" |sed -e s/-store// |tr - _`
+  echo "import $identifier from './$file'" >>index.js
+  list="$list $identifier,"
+done
+echo >>index.js
+echo "reactor.registerStores({$list})" >>index.js
+
+cd ../..
+
+./node_modules/.bin/prettier --write --trailing-comma all --no-semi --single-quote src/actions/index.js
+./node_modules/.bin/prettier --write --trailing-comma all --no-semi --single-quote src/stores/index.js

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd backend &&
+exec bundle exec shotgun -p 9313 .config.ru "$@"
