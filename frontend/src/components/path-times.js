@@ -3,13 +3,11 @@ import * as u from '../util'
 import React from 'react'
 
 export default
-@d.connect(props => ({
-}))
+@d.connect(props => ({}))
 class PathTimes extends React.Component {
   render() {
     return <p>hello world</p>
   }
 }
 
-PathTimes.propTypes = {
-}
+PathTimes.propTypes = {}

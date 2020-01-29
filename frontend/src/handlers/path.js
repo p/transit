@@ -8,8 +8,7 @@ import moment from 'moment'
 import comp from '../components'
 
 export default
-@d.connect(props => ({
-}))
+@d.connect(props => ({}))
 class PathHandler extends React.Component {
   render() {
     if (!this.props.path_times) {
@@ -24,5 +23,4 @@ class PathHandler extends React.Component {
   }
 }
 
-PathHandler.propTypes = {
-}
+PathHandler.propTypes = {}
