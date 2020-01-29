@@ -10,32 +10,44 @@ const STATION_SLUGS = [
   'journal_square',
 ]
 
-class Station extends React.Component{
-  render(){
+class Station extends React.Component {
+  render() {
     //alert(JSON.stringify(this.props.trains))
-    if (this.props.trains===undefined){
+    if (this.props.trains === undefined) {
       return <p>Loading...</p>
     }
-    
+
     //alert(JSON.stringify(this.props.trains))
     t.list(t.PathApiTrain)(this.props.trains)
-    return <div><h2>{this.props.station.name}</h2>
-    <div>Next train: {_.map(this.props.trains,train=>
-      <p key={`${train.lineName}--${train.projectedArrival}`}>{train.projectedArrival}</p>)}</div>
-    </div>
+    return (
+      <div>
+        <h2>{this.props.station.name}</h2>
+        <div>
+          Next train:{' '}
+          {_.map(this.props.trains, train => (
+            <p key={`${train.lineName}--${train.projectedArrival}`}>
+              {train.projectedArrival}
+            </p>
+          ))}
+        </div>
+      </div>
+    )
   }
 }
 
-export default
-class PathTimes extends React.Component {
+export default class PathTimes extends React.Component {
   render() {
-    return <div>
-    {_.map(STATION_SLUGS,slug=><Station key={slug}
-    station={this.props.stations[slug]}
-    trains={this.props.trains[slug]}
-    />
-      )}
-    </div>
+    return (
+      <div>
+        {_.map(STATION_SLUGS, slug => (
+          <Station
+            key={slug}
+            station={this.props.stations[slug]}
+            trains={this.props.trains[slug]}
+          />
+        ))}
+      </div>
+    )
   }
 }
 

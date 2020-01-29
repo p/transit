@@ -9,17 +9,21 @@ import comp from '../components'
 
 export default
 @d.connect(props => ({
-  stations: [['path','stations'],u.unim],
-  trains: [['path','trains'],u.unim],
-  }))
+  stations: [['path', 'stations'], u.unim],
+  trains: [['path', 'trains'], u.unim],
+}))
 class PathHandler extends React.Component {
   render() {
     if (!this.props.stations) {
       return <div>Loading...</div>
     }
 
-    return <comp.PathTimes   stations={this.props.stations}
-trains={this.props.trains}    />
+    return (
+      <comp.PathTimes
+        stations={this.props.stations}
+        trains={this.props.trains}
+      />
+    )
   }
 
   componentDidMount() {
