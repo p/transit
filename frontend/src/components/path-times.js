@@ -10,6 +10,8 @@ const STATION_SLUGS = [
   'journal_square',
 ]
 
+let hm_formatter = d.DateTimeFormatter.ofPattern('H:mm').withLocale(d.JodaLocale.US)
+
 class Station extends React.Component {
   render() {
     //alert(JSON.stringify(this.props.trains))
@@ -26,7 +28,8 @@ class Station extends React.Component {
           Next train:{' '}
           {_.map(this.props.trains, train => (
             <p key={`${train.lineName}--${train.projectedArrival}`}>
-              {train.projectedArrival}
+            {train.lineName}{': '}
+              {train.arrival.format(hm_formatter)}
             </p>
           ))}
         </div>

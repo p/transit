@@ -845,6 +845,16 @@
     prop-types "^15.6.2"
     scheduler "^0.17.0"
 
+"@js-joda/core@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@js-joda/core/-/core-2.0.0.tgz#e9a351ee6feb91262770e2a3d085aa0219ad6afb"
+  integrity sha512-OWm/xa9O9e4ugzNHoRT3IsXZZYfaV6Ia1aRwctOmCQ2GYWMnhKBzMC1WomqCh/oGxEZKNtPy5xv5//VIAOgMqw==
+
+"@js-joda/locale_en-us@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@js-joda/locale_en-us/-/locale_en-us-3.1.0.tgz#87799dd435af501bac94a266ff670039a9e23d65"
+  integrity sha512-YWeAk9D/zHv1oRrTktazf8qFA6g/m1eJXBs4IKUHZWsGqUJgTfKX89WHZtBeZz5SYqNkRnX6HxjMQHGYjpBtuA==
+
 "@rq/prevent-default-wrapper@^0.0.4":
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/@rq/prevent-default-wrapper/-/prevent-default-wrapper-0.0.4.tgz#3b0c62941daf244689c4594553a7a22d00c3864d"
