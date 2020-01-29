@@ -12,6 +12,7 @@ const STATION_SLUGS = [
 
 class Station extends React.Component{
   render(){
+    //alert(JSON.stringify(this.props.trains))
     if (this.props.trains===undefined){
       return <p>Loading...</p>
     }
