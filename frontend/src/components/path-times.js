@@ -10,20 +10,22 @@ const STATION_SLUGS = [
   'journal_square',
 ]
 
-let hm_formatter = d.DateTimeFormatter.ofPattern('H:mm').withLocale(d.JodaLocale.US)
+let hm_formatter = d.DateTimeFormatter.ofPattern('H:mm').withLocale(
+  d.JodaLocale.US,
+)
 //let m_formatter = d.DateTimeFormatter.ofPattern('m').withLocale(d.JodaLocale.US)
 
 function Train(props) {
-  let delta=d.Duration.between(d.LocalDateTime.now(),props.train.arrival)
-  
-return            <p>
-            {props.train.lineName}{': '}
-              {props.train.arrival.format(hm_formatter)}
-              {' '}
-              {delta.toMinutes()} min
-              {' '}
-              {props.train.status}
-            </p>
+  let delta = d.Duration.between(d.LocalDateTime.now(), props.train.arrival)
+
+  return (
+    <p>
+      {props.train.lineName}
+      {': '}
+      {props.train.arrival.format(hm_formatter)} {delta.toMinutes()} min{' '}
+      {props.train.status}
+    </p>
+  )
 }
 
 class Station extends React.Component {
@@ -40,8 +42,12 @@ class Station extends React.Component {
         <h2>{this.props.station.name}</h2>
         <div>
           Next train:{' '}
-          {_.map(this.props.trains, train => <Train train={train}  key={`${train.lineName}--${train.projectedArrival}`} />
-          )}
+          {_.map(this.props.trains, train => (
+            <Train
+              train={train}
+              key={`${train.lineName}--${train.projectedArrival}`}
+            />
+          ))}
         </div>
       </div>
     )
