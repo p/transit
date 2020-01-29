@@ -9,7 +9,7 @@ export default function Nav() {
       <ul>
         <li>
           <Link to="Path">PATH</Link>
-  </li>
+        </li>
       </ul>
     </nav>
   )

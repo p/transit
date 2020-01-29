@@ -29,29 +29,29 @@ function Train(props) {
   )
 }
 
-function Station (props){
-    //alert(JSON.stringify(this.props.trains))
-    if (props.trains === undefined) {
-      return <p>Loading...</p>
-    }
-
-    //alert(JSON.stringify(this.props.trains))
-    t.list(t.PathApiTrain)(props.trains)
-    return (
-      <div>
-        <h2>{props.station.name}</h2>
-        <div>
-          Next train:{' '}
-          {_.map(props.trains, train => (
-            <Train
-              train={train}
-              key={`${train.lineName}--${train.projectedArrival}`}
-            />
-          ))}
-        </div>
-      </div>
-    )
+function Station(props) {
+  //alert(JSON.stringify(this.props.trains))
+  if (props.trains === undefined) {
+    return <p>Loading...</p>
   }
+
+  //alert(JSON.stringify(this.props.trains))
+  t.list(t.PathApiTrain)(props.trains)
+  return (
+    <div>
+      <h2>{props.station.name}</h2>
+      <div>
+        Next train:{' '}
+        {_.map(props.trains, train => (
+          <Train
+            train={train}
+            key={`${train.lineName}--${train.projectedArrival}`}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
 
 export default class PathTimes extends React.Component {
   render() {
