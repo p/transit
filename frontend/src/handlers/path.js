@@ -18,7 +18,8 @@ class PathHandler extends React.Component {
       return <div>Loading...</div>
     }
 
-    return <comp.PathTimes     />
+    return <comp.PathTimes   stations={this.props.stations}
+trains={this.props.trains}    />
   }
 
   componentDidMount() {

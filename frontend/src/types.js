@@ -2,6 +2,8 @@ import * as d from './deps'
 
 let t = d.tc
 
+export const { list } = t
+
 export const PathApiStation = t.struct({
   station: t.String,
   id: t.String,
