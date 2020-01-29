@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e
+
+base=`dirname $0`/..
+
+(cd $base/frontend &&
+  yarn install &&
+  ./script/build-production
+)
+
+docker build -t transit .
