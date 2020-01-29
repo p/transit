@@ -40,7 +40,26 @@ done
 echo >>index.js
 echo "reactor.registerStores({$list})" >>index.js
 
+cd ../handlers
+list=
+echo "// generated file - do not edit" >index.js
+echo >>index.js
+exports=
+for f in *.js; do
+  if echo "$f" |grep -q index.js; then
+    continue
+  fi
+  file=`echo "$f" |sed -e 's/.js$//'`
+  identifier=`echo "$file" |ruby -e 'puts STDIN.read.gsub(/-(.)/) { "-#{$1.upcase}" }.sub(/(.)/) { $1.upcase }'`
+  echo "import $identifier from './$file'" >>index.js
+  list="$list $identifier,"
+  exports="$exports $identifier,"
+done
+echo >>index.js
+echo "export default { $exports } " >>index.js
+
 cd ../..
 
 ./node_modules/.bin/prettier --write --trailing-comma all --no-semi --single-quote src/actions/index.js
 ./node_modules/.bin/prettier --write --trailing-comma all --no-semi --single-quote src/stores/index.js
+./node_modules/.bin/prettier --write --trailing-comma all --no-semi --single-quote src/handlers/index.js

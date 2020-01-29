@@ -1,4 +1,8 @@
 #!/bin/sh
 
-cd frontend &&
+set -e
+
+base=`dirname $0`/..
+cd $base/frontend
+
 exec ./node_modules/.bin/webpack-dev-server -d
