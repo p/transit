@@ -6,7 +6,7 @@ export const STATION_SLUGS = [
 ]
 
 export const FILTER_LINES = {
-    thirty_third_street: ['Journal Square', 'Journal Square via Hoboken']
+    thirty_third_street: ['Journal Square', 'Journal Square via Hoboken'],
     world_trade_center: ['World Trade Center'],
     journal_square: ['33rd Street', 'World Trade Center'],
 }
