@@ -1,1 +1,5 @@
-/backend/tmp
+node_modules
+yarn-error.log
+npm-debug.log
+dist
+/build
