@@ -3,9 +3,8 @@ import * as d from '../deps'
 import * as u from '../util'
 import _ from 'underscore'
 import React from 'react'
-import Link from '../components/link'
 import moment from 'moment'
-import comp from '../components'
+import * as c from '../components'
 
 export default
 @d.connect(props => ({
@@ -19,21 +18,28 @@ class PathHandler extends React.Component {
     }
 
     return (
-      <comp.PathTimes
+    <div>
+    <c.JsLink onClick={this.refresh.bind(this)}>
+    Refresh</c.JsLink>
+      <c.PathTimes
         stations={this.props.stations}
         trains={this.props.trains}
       />
+        </div>
     )
   }
 
   componentDidMount() {
-    actions.fetch_path_times()
+    this.refresh()
   }
-
+  
   componentDidUpdate() {
-    if (!this.props.stations) {
-      actions.fetch_path_times()
+    if(!this.props.stations){
+    this.refresh()
     }
+  }
+  refresh(){
+    actions.fetch_path_times()
   }
 }
 

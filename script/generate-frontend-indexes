@@ -42,6 +42,10 @@ echo "reactor.registerStores({$list})" >>index.js
 
 do_camelcase() {
   list=
+  default=$1
+  if test -n "$default"; then
+    shift
+  fi
   echo "// generated file - do not edit" >index.js
   echo >>index.js
   exports=
@@ -56,11 +60,11 @@ do_camelcase() {
     exports="$exports $identifier,"
   done
   echo >>index.js
-  echo "export default { $exports } " >>index.js
+  echo "export $default { $exports } " >>index.js
 }
 
 cd ../handlers
-do_camelcase
+do_camelcase default
 
 cd ../components
 do_camelcase
