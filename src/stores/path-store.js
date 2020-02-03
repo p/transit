@@ -29,16 +29,18 @@ function receive_station_realtime(state, { station_slug, payload }) {
   // does not have the upcomingTrains key at all.
   // here we treat empty api response and api response with upcomingTrains
   // set to an empty array the same.
-  
-  if (payload.upcomingTrains){
+
+  if (payload.upcomingTrains) {
     t.PathApiRealtimeResponse(payload)
-  }else if(_.isEmpty(payload)){
+  } else if (_.isEmpty(payload)) {
     console.log(`Received empty response for ${station_slug}`)
-    payload={upcomingTrains:[]}
-  }else{
-    throw new Exception(`Weird payload received for ${station_slug}: ${payload}`)
+    payload = { upcomingTrains: [] }
+  } else {
+    throw new Exception(
+      `Weird payload received for ${station_slug}: ${payload}`,
+    )
   }
-  
+
   payload = payload.upcomingTrains
 
   _.each(payload, train => {

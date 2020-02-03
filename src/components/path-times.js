@@ -24,23 +24,29 @@ function Train(props) {
   )
 }
 
-function Trains(props){
-return      <div>
-        Next train:{' '}
-        {_.map(props.trains, train => (
-          <Train
-            train={train}
-            key={`${train.lineName}--${train.projectedArrival}`}
-          />
-        ))}
-      </div>
+function Trains(props) {
+  return (
+    <div>
+      Next train:{' '}
+      {_.map(props.trains, train => (
+        <Train
+          train={train}
+          key={`${train.lineName}--${train.projectedArrival}`}
+        />
+      ))}
+    </div>
+  )
 }
 
-function NoTrains(){
-  return <div>
-  <p><b>No trains are expected</b></p>
-  <p>This could mean the station is closed.</p>
-  </div>
+function NoTrains() {
+  return (
+    <div>
+      <p>
+        <b>No trains are expected</b>
+      </p>
+      <p>This could mean the station is closed.</p>
+    </div>
+  )
 }
 
 function Station(props) {
@@ -54,9 +60,11 @@ function Station(props) {
   return (
     <div>
       <h2>{props.station.name}</h2>
-      {_.isEmpty(props.trains)?<NoTrains/>:
-        <Trains trains={props.trains}/>
-      }
+      {_.isEmpty(props.trains) ? (
+        <NoTrains />
+      ) : (
+        <Trains trains={props.trains} />
+      )}
     </div>
   )
 }
