@@ -24,6 +24,25 @@ function Train(props) {
   )
 }
 
+function Trains(props){
+return      <div>
+        Next train:{' '}
+        {_.map(props.trains, train => (
+          <Train
+            train={train}
+            key={`${train.lineName}--${train.projectedArrival}`}
+          />
+        ))}
+      </div>
+}
+
+function NoTrains(){
+  return <div>
+  <p><b>No trains are expected</b></p>
+  <p>This could mean the station is closed.</p>
+  </div>
+}
+
 function Station(props) {
   //alert(JSON.stringify(this.props.trains))
   if (props.trains === undefined) {
@@ -35,15 +54,9 @@ function Station(props) {
   return (
     <div>
       <h2>{props.station.name}</h2>
-      <div>
-        Next train:{' '}
-        {_.map(props.trains, train => (
-          <Train
-            train={train}
-            key={`${train.lineName}--${train.projectedArrival}`}
-          />
-        ))}
-      </div>
+      {_.isEmpty(props.trains)?<NoTrains/>:
+        <Trains trains={props.trains}/>
+      }
     </div>
   )
 }
