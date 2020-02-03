@@ -25,12 +25,21 @@ function receive_stations(state, payload) {
 //let iso8601_formatter = d.DateTimeFormatter.ofPattern(iso8601_pattern).withLocale(d.JodaLocale.US)
 
 function receive_station_realtime(state, { station_slug, payload }) {
-  t.PathApiRealtimeResponse(payload)
   // if a station is closed, the api response is an empty hash and it
   // does not have the upcomingTrains key at all.
   // here we treat empty api response and api response with upcomingTrains
   // set to an empty array the same.
-  payload = payload.upcomingTrains || []
+  
+  if (payload.upcomingTrains){
+    t.PathApiRealtimeResponse(payload)
+  }else if(_.isEmpty(payload)){
+    console.log(`Received empty response for ${station_slug}`)
+    payload={upcomingTrains:[]}
+  }else{
+    throw new Exception(`Weird payload received for ${station_slug}: ${payload}`)
+  }
+  
+  payload = payload.upcomingTrains
 
   _.each(payload, train => {
     let utcTimestamp = d.Instant.parse(train.projectedArrival)
