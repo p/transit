@@ -50,6 +50,7 @@ function Station(props) {
 
 export default class PathTimes extends React.Component {
   render() {
+  //alert(JSON.stringify(this.props))
     return (
       <div>
         {_.map(data.STATION_SLUGS, slug => (

@@ -26,7 +26,11 @@ function receive_stations(state, payload) {
 
 function receive_station_realtime(state, { station_slug, payload }) {
   t.PathApiRealtimeResponse(payload)
-  payload = payload.upcomingTrains
+  // if a station is closed, the api response is an empty hash and it
+  // does not have the upcomingTrains key at all.
+  // here we treat empty api response and api response with upcomingTrains
+  // set to an empty array the same.
+  payload = payload.upcomingTrains || []
 
   _.each(payload, train => {
     let utcTimestamp = d.Instant.parse(train.projectedArrival)

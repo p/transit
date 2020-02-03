@@ -29,6 +29,12 @@ class PathHandler extends React.Component {
   componentDidMount() {
     actions.fetch_path_times()
   }
+  
+  componentDidUpdate() {
+    if(!this.props.stations){
+    actions.fetch_path_times()
+    }
+  }
 }
 
 PathHandler.propTypes = {}
