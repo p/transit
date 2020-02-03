@@ -13,7 +13,7 @@ export default
 }))
 class PathHandler extends React.Component {
   render() {
-    if (!this.props.stations) {
+    if (!this.props.stations||!this.props.trains) {
       return <div>Loading...</div>
     }
 

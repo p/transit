@@ -12,3 +12,4 @@ export {
   DateTimeFormatter,
 } from '@js-joda/core'
 export { Locale as JodaLocale } from '@js-joda/locale_en-us'
+export preventDefaultWrapper from '@rq/prevent-default-wrapper'
