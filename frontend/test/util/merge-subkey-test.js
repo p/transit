@@ -28,4 +28,13 @@ describe('merge_subkey', function() {
       ade(result, { foo: 1, bar: { baz: { a: 'b' } } })
     })
   })
+  
+  describe('when value is not a hash', () => {
+    let left = { foo: 1 }
+    
+    it('merges', () => {
+      let result = u.merge_subkey(left, 'bar', [])
+      ade(result, { foo: 1, bar:  [] })
+    })
+  })
 })
