@@ -13,32 +13,31 @@ export default
 }))
 class PathHandler extends React.Component {
   render() {
-    if (!this.props.stations||!this.props.trains) {
+    if (!this.props.stations || !this.props.trains) {
       return <div>Loading...</div>
     }
 
     return (
-    <div>
-    <c.JsLink onClick={this.refresh.bind(this)}>
-    Refresh</c.JsLink>
-      <c.PathTimes
-        stations={this.props.stations}
-        trains={this.props.trains}
-      />
-        </div>
+      <div>
+        <c.JsLink onClick={this.refresh.bind(this)}>Refresh</c.JsLink>
+        <c.PathTimes
+          stations={this.props.stations}
+          trains={this.props.trains}
+        />
+      </div>
     )
   }
 
   componentDidMount() {
     this.refresh()
   }
-  
+
   componentDidUpdate() {
-    if(!this.props.stations){
-    this.refresh()
+    if (!this.props.stations) {
+      this.refresh()
     }
   }
-  refresh(){
+  refresh() {
     actions.fetch_path_times()
   }
 }

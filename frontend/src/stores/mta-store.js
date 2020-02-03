@@ -9,8 +9,4 @@ import * as t from '../types'
 import _ from 'underscore'
 import * as u from '../util'
 
-export default u.define_store(
-  {},
-  {
-  },
-)
+export default u.define_store({}, {})
