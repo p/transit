@@ -3,7 +3,7 @@
 set -e
 
 base=`dirname $0`/..
-cd $base/frontend
+cd $base
 
 cd src/actions
 
